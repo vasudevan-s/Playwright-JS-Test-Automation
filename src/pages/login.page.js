@@ -1,11 +1,15 @@
 /*
     Created by Vasudevan Sampath
-    This is a POM (Page object model) test design pattern class for Login Page related methods
+    This is a POM (Page object model) test design pattern class for Login Page related methods.
+    This class extends from BasePage class
  */
-export class LoginPage {
+
+import {BasePage} from "./base.page";
+
+export class LoginPage extends BasePage {
 
     constructor(page) {
-        this.page = page;
+        super(page);
         this.myAccount = page.locator("//a[@role='button']//span[@class='title'][normalize-space()='My account']");
         this.loginMenuItem = page.locator("//span[normalize-space()='Login']");
         this.userName = page.locator('#input-email');
@@ -21,5 +25,9 @@ export class LoginPage {
         await this.password.fill(password);
         await this.submit.click();
         await this.page.waitForLoadState();
+    }
+
+    async isLoginSuccessful() {
+        await this.isVisible(this.editAccountInfo);
     }
 }
