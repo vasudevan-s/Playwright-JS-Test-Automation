@@ -3,7 +3,6 @@
     This is a POM (Page object model) test design pattern class for Login Page related methods.
     This class extends from BasePage class
  */
-
 import {BasePage} from "./base.page";
 
 export class LoginPage extends BasePage {

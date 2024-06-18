@@ -13,6 +13,6 @@ export class HomePage extends BasePage {
     }
 
     async getHomePageLinks() {
-        return this.menuTopLinks.allInnerTexts();
+        return await this.menuTopLinks.allInnerTexts();
     }
 }
