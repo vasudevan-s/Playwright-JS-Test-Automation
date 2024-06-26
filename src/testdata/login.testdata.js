@@ -4,8 +4,14 @@
  */
 export class LoginTestData {
 
-    static loginCred = {
+    static validLoginCred = {
         username: 'playwright@playwright.com',
         password: 'password1'
     }
+
+    static invalidLoginCred = {
+        username: 'playwright@playwright123.com',
+        password: 'password123'
+    }
+
 }
