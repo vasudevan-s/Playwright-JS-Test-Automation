@@ -1,24 +1,26 @@
 /*
     Created by Vasudevan Sampath
-    This spec has all methods referring to the Login page
+    This test spec has test methods for Login page
  */
 import {test} from '@playwright/test';
 import {LoginPage} from '../../pages/login.page';
-import {LoginTestData} from '../../testdata/login.testdata';
-import {after, before} from "node:test";
+import {logincred} from '../../testdata/loginpage.json';
+import {Misc} from '../../util/misc';
+
+let loginPage;
+
+test.beforeEach(async ({page}) => {
+    loginPage = new LoginPage(page);
+    await loginPage.navigateToHomePage();
+    await loginPage.navigateToLoginScreen();
+});
 
 test('Verify valid login credentials', async ({page}) => {
-    const loginPage = await new LoginPage(page);
-    const loginTestData = LoginTestData.validLoginCred;
-    await loginPage.navigateToHomePage();
-    await loginPage.doLogin(loginTestData.username, loginTestData.password);
+    await loginPage.doLogin(logincred[0].loginid, logincred[0].password);
     await loginPage.isLoginSuccessful();
 });
 
-test.fail('Verify invalid login credentials', async ({page}) => {
-    const loginPage = await new LoginPage(page);
-    const loginTestData = LoginTestData.invalidLoginCred;
-    await loginPage.navigateToHomePage();
-    await loginPage.doLogin(loginTestData.username, loginTestData.password);
-    await loginPage.isLoginSuccessful();
+test('Verify invalid login credentials', async ({page}) => {
+    await loginPage.doLogin(Misc.generateUUID(), Misc.generateUUID());
+    await loginPage.didLoginFail();
 });

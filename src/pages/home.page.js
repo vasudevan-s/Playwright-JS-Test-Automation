@@ -9,10 +9,15 @@ export class HomePage extends BasePage {
 
     constructor(page) {
         super(page);
-        this.menuTopLinks = page.locator('#widget-navbar-217834 > ul > li > a > div > span');
+        this.menuTopLinks = page.locator("//ul[@class='navbar-nav horizontal']/li/a/div");
+        this.menuVerticalLinks = page.locator("//div[@class='list-group mb-3']/a");
     }
 
     async getHomePageLinks() {
         return await this.menuTopLinks.allInnerTexts();
+    }
+
+    async getHomePageVerticalLinks() {
+        return await this.menuVerticalLinks.allInnerTexts();
     }
 }

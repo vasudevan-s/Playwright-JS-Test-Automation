@@ -1,0 +1,9 @@
+{
+"logincred":
+[
+    {
+        "loginid" : "playwright@playwright.com", 
+        "password": "password1"
+    }
+]
+}
