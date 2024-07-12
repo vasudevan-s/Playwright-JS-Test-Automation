@@ -4,6 +4,10 @@
     {
         "loginid" : "playwright@playwright.com", 
         "password": "password1"
+    },
+    {
+        "loginid" : "playwright2@playwright.com",
+        "password": "password2"
     }
 ]
 }
