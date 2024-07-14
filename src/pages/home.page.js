@@ -14,7 +14,8 @@ export class HomePage extends BasePage {
     }
 
     async getHomePageLinks() {
-        return await this.menuTopLinks.allInnerTexts();
+        let innerTexts = await this.menuTopLinks.allInnerTexts();
+        return innerTexts.map(element => element.replace('\n', ''));
     }
 
     async getHomePageVerticalLinks() {
